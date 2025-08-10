@@ -2,7 +2,7 @@
 
 **A web application designed to empower young people by providing free access to skill-building education and proactive mental wellness tools.**
 
-[![Vercel Deploy](https://vercel.com/button)](https://YOUR_VERCEL_DEPLOYMENT_LINK_HERE)
+[![Vercel Deploy](https://vercel.com/button)](https://skillup-and-smile-git-main-deadler-alts-projects.vercel.app/)
 
 ## 🎯 The Problem
 
