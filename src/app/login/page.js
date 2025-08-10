@@ -7,9 +7,8 @@ import { supabase } from '@/lib/supabaseClient';
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const router = useRouter(); // Inicjalizujemy router
+  const router = useRouter(); 
 
-  // Asynchroniczna funkcja do obsługi REJESTRACJI
   const handleSignUp = async () => {
     const { data, error } = await supabase.auth.signUp({
       email: email,
@@ -20,11 +19,9 @@ export default function LoginPage() {
       alert('Błąd podczas rejestracji: ' + error.message);
     } else {
       alert('Rejestracja udana! Możesz się teraz zalogować.');
-      // Możemy od razu zalogować użytkownika po rejestracji, ale na razie zostawmy tak dla prostoty
     }
   };
 
-  // Asynchroniczna funkcja do obsługi LOGOWANIA
   const handleSignIn = async () => {
     const { data, error } = await supabase.auth.signInWithPassword({
       email: email,
@@ -34,7 +31,6 @@ export default function LoginPage() {
     if (error) {
       alert('Błąd podczas logowania: ' + error.message);
     } else {
-      // Logowanie udane! Przekierowujemy na stronę główną
       router.push('/');
     }
   };

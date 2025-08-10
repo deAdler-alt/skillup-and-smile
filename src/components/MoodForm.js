@@ -4,30 +4,28 @@ import { useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 
 const MoodForm = () => {
-  const [mood, setMood] = useState(3); // Domyślny nastrój to 3
+  const [mood, setMood] = useState(3);
   const [note, setNote] = useState('');
   const [message, setMessage] = useState('');
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Zapobiegamy przeładowaniu strony
+    e.preventDefault(); 
     setMessage('');
 
-    // Pobieramy aktualnie zalogowanego użytkownika
     const { data: { user } } = await supabase.auth.getUser();
 
     if (user) {
-      // Wysyłamy dane do tabeli 'mood_entries'
       const { error } = await supabase.from('mood_entries').insert({
         mood_level: mood,
         note: note,
-        user_id: user.id, // Najważniejsza część: dołączamy ID użytkownika!
+        user_id: user.id, 
       });
 
       if (error) {
         setMessage('Błąd podczas zapisywania: ' + error.message);
       } else {
         setMessage('Nastrój zapisany pomyślnie!');
-        setNote(''); // Czyścimy pole notatki po zapisie
+        setNote(''); 
       }
     } else {
       setMessage('Musisz być zalogowany, aby zapisać nastrój.');
